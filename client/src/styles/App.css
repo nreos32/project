@@ -1,0 +1,50 @@
+/* Global styles and root layout */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: #d4d4d4;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  background-size: contain;
+  background-position: center;
+  background-repeat: repeat;
+  background-color: #061b57;
+}
+
+/* Main content area */
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: transparent;
+}
+
+/* Settings Menu Sliding Window */
+.sliding-window {
+  position: absolute;
+  bottom: 10px;
+  left: 263px;
+  width: 500px;
+  height: auto;
+  min-height: 700px;
+  background: #ffffff;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  z-index: 2;
+  padding: 20px;
+  border-radius: 10px 0 0 10px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sliding-window.open {
+  transform: translateX(0px);
+  opacity: 1;
+  visibility: visible;
+}

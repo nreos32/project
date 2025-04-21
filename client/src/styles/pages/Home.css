@@ -1,0 +1,614 @@
+/* Home Container Layout */
+.home-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 20px;
+}
+
+/* Container for positioning elements freely */
+.bottom-row {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Card holder images */
+.holder1-image,
+.holder2-image {
+  position: absolute;
+  width: 250px;
+  height: 200px;
+  border-radius: 10px;
+  top: 78%;
+  z-index: 2;
+}
+
+.holder1-image {
+  left: 32%;
+}
+
+.holder2-image {
+  right: 32%;
+}
+
+.holder3-image {
+  position: absolute;
+  width: 600px;
+  height: 450px;
+  border-radius: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 14%;
+  z-index: 2;
+}
+
+/* Pack images and headers */
+.charizard-pack,
+.mewtwo-pack,
+.pikachu-pack {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  top: 15%;
+  z-index: 4;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.charizard-pack {
+  left: 33%;
+}
+
+.mewtwo-pack {
+  left: 43.7%;
+}
+
+.pikachu-pack {
+  right: 33%;
+}
+
+/* Pack titles */
+.charizard-header,
+.mewtwo-title,
+.pikachu-title {
+  position: absolute;
+  width: 275px;
+  height: auto;
+  top: 18%;
+  z-index: 5;
+}
+
+.charizard-header {
+  left: 30.25%;
+}
+
+.mewtwo-title {
+  left: 41%;
+}
+
+.pikachu-title {
+  right: 31%;
+}
+
+/* Pack headers */
+.pack-header1,
+.pack-header2,
+.pack-header3 {
+  position: absolute;
+  width: 170px;
+  height: auto;
+  top: 17%;
+  z-index: 5;
+}
+
+.pack-header1 {
+  left: 33%;
+}
+
+.pack-header2 {
+  left: 43.6%;
+}
+
+.pack-header3 {
+  right: 35%;
+}
+
+/* Action buttons and icons */
+.wonderpic-image {
+  position: absolute;
+  width: 125px;
+  height: auto;
+  left: 36%;
+  bottom: 3%;
+  z-index: 3;
+}
+
+.Shop-image {
+  position: absolute;
+  width: 125px;
+  height: auto;
+  right: 36%;
+  bottom: 3%;
+  z-index: 3;
+}
+
+.pack-button {
+  position: absolute;
+  width: 400px;
+  height: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #42c28d;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 33%;
+  z-index: 4;
+}
+
+/* Utility icons */
+.gift-image {
+  position: absolute;
+  width: 70px;
+  height: auto;
+  right: 1%;
+  bottom: 89.8%;
+  z-index: 3;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gift-background {
+  position: absolute;
+  width: 85px;
+  height: auto;
+  right: 0.6%;
+  bottom: 89.5%;
+  z-index: 2;
+}
+
+.mail-image {
+  position: absolute;
+  width: 75px;
+  height: auto;
+  right: 8%;
+  bottom: 90%;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.mail-background {
+  position: absolute;
+  width: 85px;
+  height: auto;
+  right: 7.7%;
+  bottom: 89.5%;
+  z-index: 2;
+}
+
+/* Hourglass and pack indicators */
+.hourglass-holder {
+  position: absolute;
+  width: 300px;
+  height: 60px;
+  top: 69%;
+  z-index: 2;
+}
+
+.hourglass {
+  position: absolute;
+  width: 40px;
+  height: auto;
+  left: 60.7%;
+  top: 69.3%;
+  z-index: 3;
+}
+
+.hourglass-background {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 69%;
+  left: 60%;
+  z-index: 2;
+}
+
+.pack,
+.pack2 {
+  position: absolute;
+  width: 40px;
+  height: auto;
+  top: 69%;
+  z-index: 2;
+}
+
+.pack {
+  left: 47.5%;
+}
+
+.pack2 {
+  left: 50%;
+}
+
+/* Selection styles for pack groups */
+.charizard-pack.selected,
+.charizard-header.selected,
+.pack-header1.selected {
+  filter: brightness(1.1) drop-shadow(0 0 15px rgba(255, 60, 0, 0.897));
+}
+
+.mewtwo-pack.selected,
+.mewtwo-title.selected,
+.pack-header2.selected {
+  filter: brightness(1.1) drop-shadow(0 0 15px rgba(162, 0, 255, 0.7));
+}
+
+.pikachu-pack.selected,
+.pikachu-title.selected,
+.pack-header3.selected {
+  filter: brightness(1.1) drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+}
+
+/* Pack opening animation */
+@keyframes packOpen {
+  0% {
+    transform: translateY(0) scale(1);
+    filter: brightness(1);
+  }
+  20% {
+    transform: translateY(-25px) scale(1.2) rotate(-8deg);
+    filter: brightness(1.3) drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+  }
+  40% {
+    transform: translateY(-10px) scale(1.35) rotate(5deg);
+    filter: brightness(1.5) drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+  }
+  60% {
+    transform: translateY(-30px) scale(1.5) rotate(-3deg);
+    filter: brightness(1.8) drop-shadow(0 0 20px rgba(255, 255, 255, 0.95));
+  }
+  80% {
+    transform: translateY(-15px) scale(1.4) rotate(2deg);
+    filter: brightness(1.6) drop-shadow(0 0 25px gold);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes packGlow {
+  0% {
+    box-shadow: 0 0 0px transparent;
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0px transparent;
+  }
+}
+
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(30px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.pack.opening {
+  animation: packOpen 1.2s ease-in-out, packGlow 1.2s ease-in-out;
+  z-index: 10;
+}
+
+.pulled-cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.05);
+  }
+  80% {
+    transform: translateY(5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Common rarity glow */
+@keyframes cardGlowCommon {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(189, 189, 189, 0.8),
+      0 0 60px rgba(189, 189, 189, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Uncommon rarity glow */
+@keyframes cardGlowUncommon {
+  0% {
+    box-shadow: 0 0 15px rgba(56, 142, 60, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(56, 142, 60, 0.8), 0 0 60px rgba(56, 142, 60, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(56, 142, 60, 0.3);
+  }
+}
+
+/* Rare rarity glow */
+@keyframes cardGlowRare {
+  0% {
+    box-shadow: 0 0 15px rgba(59, 76, 202, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 76, 202, 0.8), 0 0 60px rgba(59, 76, 202, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(59, 76, 202, 0.3);
+  }
+}
+
+/* Double Rare rarity glow */
+@keyframes cardGlowDoubleRare {
+  0% {
+    box-shadow: 0 0 15px rgba(180, 140, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(180, 140, 0, 0.3);
+  }
+}
+
+/* Illustration Rare glow */
+@keyframes cardGlowIllustrationRare {
+  0% {
+    box-shadow: 0 0 15px rgba(230, 126, 34, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(230, 126, 34, 0.8),
+      0 0 60px rgba(255, 179, 102, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(230, 126, 34, 0.3);
+  }
+}
+
+/* Special Art rarity glow */
+@keyframes cardGlowSpecialArt {
+  0% {
+    box-shadow: 0 0 15px rgba(215, 38, 96, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(215, 38, 96, 0.8),
+      0 0 60px rgba(255, 102, 163, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(215, 38, 96, 0.3);
+  }
+}
+
+/* Crown Rare rarity glow */
+@keyframes cardGlowCrownRare {
+  0% {
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(160, 32, 240, 0.8),
+      0 0 60px rgba(160, 32, 240, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.3);
+  }
+}
+
+/* Immersive Rare rarity glow */
+@keyframes cardGlowImmersiveRare {
+  0% {
+    box-shadow: 0 0 15px rgba(0, 150, 136, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 150, 136, 0.8), 0 0 60px rgba(0, 150, 136, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(0, 150, 136, 0.3);
+  }
+}
+
+/* Shine effect for cards */
+@keyframes shineEffect {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Floating animation for high rarity cards */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Pulse animation for extra emphasis */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Single-card view container */
+.pulled-card-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  min-height: 450px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Base pulled-card styles */
+.pulled-card {
+  min-width: 300px;
+  max-width: 300px;
+  animation: fadeInUp 0.8s ease-out, cardGlowCommon 2s infinite;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Rarity-specific animations for pulled cards */
+.pulled-card.Common {
+  animation: fadeInUp 0.8s ease-out, cardGlowCommon 2s infinite;
+}
+
+.pulled-card.Uncommon {
+  animation: fadeInUp 0.8s ease-out, cardGlowUncommon 2s infinite;
+}
+
+.pulled-card.Rare {
+  animation: fadeInUp 0.8s ease-out, cardGlowRare 2s infinite;
+}
+
+.pulled-card.Double-Rare {
+  animation: fadeInUp 0.8s ease-out, cardGlowDoubleRare 2.5s infinite,
+    pulse 3s infinite;
+  transform: scale(1.05);
+}
+
+.pulled-card.Illustration-Rare {
+  animation: fadeInUp 0.8s ease-out, cardGlowIllustrationRare 2.5s infinite,
+    pulse 3s infinite;
+  transform: scale(1.05);
+}
+
+.pulled-card.Special-Art {
+  animation: fadeInUp 0.8s ease-out, cardGlowSpecialArt 2.5s infinite,
+    pulse 3s infinite;
+  transform: scale(1.05);
+}
+
+.pulled-card.Crown-Rare {
+  animation: fadeInUp 0.8s ease-out, cardGlowCrownRare 2s infinite,
+    float 4s infinite ease-in-out, pulse 3s infinite;
+  transform: scale(1.08);
+}
+
+.pulled-card.Immersive-Rare {
+  animation: fadeInUp 0.8s ease-out, cardGlowImmersiveRare 2s infinite,
+    float 4s infinite ease-in-out, pulse 3s infinite;
+  transform: scale(1.08);
+}
+
+/* Shine effect applied to all cards */
+.pulled-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shineEffect 2s infinite;
+  pointer-events: none;
+}
+
+/* Enhanced shine effect for higher rarities */
+.pulled-card.Double-Rare::after,
+.pulled-card.Illustration-Rare::after,
+.pulled-card.Special-Art::after,
+.pulled-card.Crown-Rare::after,
+.pulled-card.Immersive-Rare::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shineEffect 1.5s infinite;
+}
+
+.pulled-card img {
+  width: 100%;
+  border-radius: 12px;
+  transform: translateZ(0);
+}
+
+/* Pulled cards modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Pulled cards modal container */
+.modal-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}

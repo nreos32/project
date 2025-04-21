@@ -1,0 +1,253 @@
+/* Collection page styles */
+.collection-container {
+  width: 100%;
+  padding: 32px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.collection-scroll {
+  width: 100%;
+  max-width: 1500px;
+  min-height: 60vh;
+  max-height: 70vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 36px;
+  justify-items: center;
+  align-items: start;
+  padding: 24px 0 48px 0;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px #3b4cca22;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.card-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  padding: 18px 12px 16px 12px;
+  min-width: 180px;
+  min-height: 280px;
+  box-shadow: 0 6px 24px #3b4cca22;
+  border: 3px solid #bdbdbd;
+  position: relative;
+  transition: transform 0.18s, box-shadow 0.18s, border 0.18s;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+.card-frame:hover {
+  transform: scale(1.08) rotate(-1deg);
+  box-shadow: 0 12px 40px #3b4cca44;
+  border: 3.5px solid #3b4cca;
+  z-index: 2;
+}
+.card-frame img {
+  width: 140px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: #eaeaea;
+  box-shadow: 0 2px 12px #3b4cca22;
+  border: 2px solid #bdbdbd;
+  transition: border 0.18s;
+}
+.card-frame:hover img {
+  border: 2.5px solid #3b4cca;
+}
+.card-info-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.card-qty {
+  font-size: 16px;
+  color: #444;
+  font-weight: 700;
+  margin-bottom: 2px;
+  text-align: center;
+  width: 100%;
+  letter-spacing: 0.5px;
+}
+.card-name {
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+  color: #222;
+  margin-bottom: 2px;
+  text-shadow: 1px 1px 0 #fff, 0 0 6px #ffcb05aa;
+  letter-spacing: 0.5px;
+  width: 100%;
+}
+.card-rarity {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-top: 2px;
+  padding: 1.5px 8px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #fffbe6 60%, #ffe082 100%);
+  color: #b48c00;
+  box-shadow: 0 1px 4px #b48c0033;
+  border: 1.5px solid #ffe082;
+  display: inline-block;
+  text-align: center;
+  min-width: 0;
+  width: auto;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-frame[data-rarity="Rare"] .card-rarity {
+  background: linear-gradient(90deg, #e3eaff 60%, #3b4cca22 100%);
+  color: #3b4cca;
+  border-color: #3b4cca88;
+}
+.card-frame[data-rarity="Double Rare"] .card-rarity {
+  background: linear-gradient(90deg, #fffbe6 60%, #ffe082 100%);
+  color: #b48c00;
+  border-color: #b48c00;
+}
+.card-frame[data-rarity="Illustration Rare"] .card-rarity {
+  background: linear-gradient(90deg, #fff0e6 60%, #ffb366 100%);
+  color: #e67e22;
+  border-color: #e67e22;
+}
+.card-frame[data-rarity="Special Art"] .card-rarity {
+  background: linear-gradient(90deg, #ffe6f0 60%, #ff66a3 100%);
+  color: #d72660;
+  border-color: #d72660;
+}
+.card-frame[data-rarity="Crown Rare"],
+.card-frame[data-rarity="Crown"] .card-rarity {
+  background: linear-gradient(90deg, #f3e6ff 60%, #a020f0 100%);
+  color: #a020f0;
+  border-color: #a020f0;
+}
+.card-frame[data-rarity="Immersive Rare"] .card-rarity {
+  background: linear-gradient(90deg, #e6fff7 60%, #009688 100%);
+  color: #009688;
+  border-color: #009688;
+}
+.card-frame[data-rarity="Uncommon"] .card-rarity {
+  background: linear-gradient(90deg, #e6ffe6 60%, #388e3c 100%);
+  color: #388e3c;
+  border-color: #388e3c;
+}
+.card-frame[data-rarity="Common"] .card-rarity {
+  background: linear-gradient(90deg, #f5f5f5 60%, #bdbdbd 100%);
+  color: #666;
+  border-color: #bdbdbd;
+}
+@media (max-width: 900px) {
+  .collection-scroll {
+    max-width: 98vw;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  .card-frame {
+    min-width: 120px;
+    min-height: 180px;
+    padding: 10px 4px 10px 4px;
+  }
+  .card-frame img {
+    width: 90px;
+    height: 120px;
+  }
+  .card-name {
+    font-size: 15px;
+  }
+}
+.collection-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0 18px 0;
+}
+
+.sort-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 10px 22px;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+  outline: none;
+}
+.sort-btn:hover,
+.sort-btn:focus {
+  background: rgba(255, 203, 5, 0.3);
+  transform: translateY(-2px) scale(1.04);
+  color: #fff;
+  box-shadow: 0 12px 48px rgba(255, 255, 255, 0.3);
+}
+.sort-btn.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #fff;
+  box-shadow: 0 12px 48px rgba(255, 255, 255, 0.4);
+}
+
+/* Search input styling */
+.search-input {
+  flex: 1 1 100%;
+  margin-top: 8px;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  width: 250px;
+  max-width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.search-input:focus {
+  border-color: #42c28d;
+  box-shadow: 0 0 0 3px rgba(66, 194, 141, 0.3);
+}
+
+@media (max-width: 900px) {
+  .search-input {
+    width: 100%;
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .collection-controls {
+    flex-direction: column;
+    gap: 10px;
+    margin: 16px 0 10px 0;
+  }
+  .sort-btn {
+    width: 100%;
+    font-size: 15px;
+    padding: 8px 0;
+  }
+}
+
+.collection-scroll::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

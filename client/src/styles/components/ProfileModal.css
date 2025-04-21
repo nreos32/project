@@ -1,0 +1,98 @@
+/* Profile Picture Selection Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+/* Profile Picture Selection Modal Window */
+.modal {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Profile Selection Modal Title */
+.modal h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Grid of Profile Picture Options */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-height: calc(75vh - 150px);
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.profile-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Profile Picture Options */
+.profile-option {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.profile-option:hover {
+  transform: scale(1.1);
+}
+
+.profile-option.selected {
+  border: 2px solid black;
+  position: relative;
+}
+
+/* Confirm Button Styles */
+.confirm-button {
+  display: block;
+  margin: 20px auto 0;
+  width: 67%;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #42c28d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.confirm-button:hover {
+  background-color: #0056b3;
+}
+
+.confirm-button.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.confirm-button.disabled:hover {
+  background-color: #cccccc;
+}

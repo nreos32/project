@@ -1,0 +1,102 @@
+.register-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #061b57 0%, #1e3a8a 100%);
+}
+
+.register-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.logo {
+    width: 200px;
+    margin-bottom: 1.5rem;
+}
+
+.register-box h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #42c28d;
+}
+
+.register-button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #42c28d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.register-button:hover {
+    background-color: #3aa77c;
+}
+
+.error-message {
+    color: #dc2626;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.login-link {
+    margin-top: 1rem;
+    color: #666;
+}
+
+.login-link span {
+    color: #42c28d;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-link span:hover {
+    color: #3aa77c;
+}
+
+.battle-image {
+    position: absolute;
+    width: 724px;
+    height: auto;
+    left: 62.1%;
+    top: 25%;
+    z-index: 1;
+}
+
+.social-image {
+    position: absolute;
+    width: 700px;
+    height: auto;
+    left: 0.5%;
+    top: 20%;
+    z-index: 3;
+}
