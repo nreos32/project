@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-const API = "http://localhost:5000/api/social";
+const API = "/api/social";
 
 const Social = () => {
   const [activeTab, setActiveTab] = useState("friends");
@@ -343,7 +343,10 @@ const Social = () => {
                         }}
                       >
                         <img
-                          src={require(`../Assets/ProfilePictures/${req.from?.profileIcon || 'PROFILE_ICON_100020_SIRNIGHT.png'}`)}
+                          src={require(`../Assets/ProfilePictures/${
+                            req.from?.profileIcon ||
+                            "PROFILE_ICON_100020_SIRNIGHT.png"
+                          }`)}
                           alt="profile"
                           style={{
                             width: 40,
@@ -413,7 +416,10 @@ const Social = () => {
                         }}
                       >
                         <img
-                          src={require(`../Assets/ProfilePictures/${req.to?.profileIcon || 'PROFILE_ICON_100020_SIRNIGHT.png'}`)}
+                          src={require(`../Assets/ProfilePictures/${
+                            req.to?.profileIcon ||
+                            "PROFILE_ICON_100020_SIRNIGHT.png"
+                          }`)}
                           alt="profile"
                           style={{
                             width: 40,
@@ -429,7 +435,9 @@ const Social = () => {
                         <span style={{ fontWeight: 600 }}>
                           {req.to?.username || "Unknown"}
                         </span>{" "}
-                        <span style={{ color: "#888", marginLeft: 8 }}>(pending)</span>
+                        <span style={{ color: "#888", marginLeft: 8 }}>
+                          (pending)
+                        </span>
                       </li>
                     ))}
                   </ul>

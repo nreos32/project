@@ -20,9 +20,7 @@ const Collection = () => {
       setError(null);
       try {
         // Fetch collection
-        const res = await fetch(
-          `http://localhost:5000/api/collection?userId=${user.id}`
-        );
+        const res = await fetch(`/api/collection?userId=${user.id}`);
         const data = await res.json();
         if (res.ok) {
           setCollection(data.cards || []);
@@ -41,9 +39,7 @@ const Collection = () => {
     // Fetch Mewtwo pack card data for assetPath lookup
     const fetchPack = async () => {
       try {
-        const res = await fetch(
-          "http://localhost:5000/api/collection/pack/mewtwo"
-        );
+        const res = await fetch("/api/pack-mewtwo");
         const data = await res.json();
         if (res.ok) {
           // Assign an id if missing (fall back to index)

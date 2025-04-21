@@ -64,9 +64,7 @@ const Home = () => {
 
     setTimeout(async () => {
       try {
-        const resPack = await fetch(
-          "http://localhost:5000/api/collection/pack/mewtwo"
-        );
+        const resPack = await fetch("/api/pack-mewtwo");
         const packList = await resPack.json();
         const pulls = [
           weightedRandom(packList, 1),
@@ -76,7 +74,7 @@ const Home = () => {
           weightedRandom(packList, 5),
         ];
         setPulledCards(pulls);
-        await fetch("http://localhost:5000/api/collection/add", {
+        await fetch("/api/collection/add", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
