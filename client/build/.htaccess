@@ -1,0 +1,11 @@
+<IfModule mod_mime.c>
+    AddType application/wasm .wasm
+    AddType application/javascript .js
+    AddEncoding gzip .gz
+    AddType application/octet-stream .data.gz
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Content-Encoding gzip
+    Header append Vary Accept-Encoding
+</IfModule>

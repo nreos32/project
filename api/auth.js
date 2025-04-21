@@ -35,6 +35,24 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 
+// Helper to get the action (register/login) from the path or query
+function getAction(req) {
+  // Vercel serverless functions route /api/auth/login to /api/auth.js with req.url = "/login"
+  // or /api/auth?login
+  if (req.url.endsWith("/register") || req.url === "/register")
+    return "register";
+  if (req.url.endsWith("/login") || req.url === "/login") return "login";
+  // Support /api/auth?login or /api/auth?register
+  if (req.query && req.query.action) return req.query.action;
+  if (req.url.includes("?")) {
+    const params = new URLSearchParams(req.url.split("?")[1]);
+    if (params.has("action")) return params.get("action");
+    if (params.has("login")) return "login";
+    if (params.has("register")) return "register";
+  }
+  return null;
+}
+
 module.exports = async (req, res) => {
   try {
     await connectDB();
@@ -53,7 +71,9 @@ module.exports = async (req, res) => {
         req.body = {};
       }
     }
-    if (req.method === "POST" && req.url.endsWith("/register")) {
+    // Determine action
+    const action = getAction(req);
+    if (req.method === "POST" && action === "register") {
       // Register
       try {
         const { username, email, password } = req.body;
@@ -76,7 +96,7 @@ module.exports = async (req, res) => {
       } catch (error) {
         return res.status(500).json({ error: "Server error" });
       }
-    } else if (req.method === "POST" && req.url.endsWith("/login")) {
+    } else if (req.method === "POST" && action === "login") {
       // Login
       try {
         const { email, password } = req.body;
