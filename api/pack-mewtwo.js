@@ -1,4 +1,3 @@
-// Vercel serverless function for getting Mewtwo Pack card list
 const mongoose = require("mongoose");
 
 let isConnected = false;

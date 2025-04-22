@@ -1,7 +1,5 @@
-// Vercel serverless function for user collection management
 const mongoose = require("mongoose");
 
-// MongoDB connection (singleton pattern)
 let isConnected = false;
 async function connectDB() {
   if (isConnected) return;

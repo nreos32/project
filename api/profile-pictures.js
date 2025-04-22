@@ -8,7 +8,6 @@ module.exports = async (req, res) => {
     return;
   }
   try {
-    // Adjust the path for Vercel deployment
     const profilePicsPath = path.join(
       process.cwd(),
       "client",
