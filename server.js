@@ -15,6 +15,8 @@ app.use(express.json());
 // Routes - Make sure these are defined BEFORE the static assets
 app.use("/api/auth", require("./server/src/routes/authRoutes"));
 app.use("/api/profiles", require("./server/src/routes/profileRoutes"));
+app.use("/api/social", require("./server/src/routes/socialRoutes"));
+app.use("/api/collection", require("./server/src/routes/collectionRoutes"));
 app.use("/api", require("./server/src/routes/api"));
 
 // Add a specific route for pack-mewtwo if it's not covered by the above
