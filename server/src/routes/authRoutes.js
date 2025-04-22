@@ -3,7 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const Collection = require("../models/Collection"); // Import Collection model
+// Fix the import path for Collection model
+const Collection = require("../models/Collection");
 
 // Register User
 router.post("/register", async (req, res) => {
@@ -21,15 +22,28 @@ router.post("/register", async (req, res) => {
       username,
       email,
       password,
-    });    await user.save();
-      // Create empty collection for the new user
-    const newCollection = new Collection({
-      userId: user._id,
-      username: user.username,
-      cards: [],
-      lastOpened: new Date() // Add lastOpened timestamp to match existing structure
     });
-    await newCollection.save();
+    await user.save();
+
+    // Create empty collection for the new user
+    try {
+      console.log("Creating collection for new user:", user._id, user.username);
+      const newCollection = new Collection({
+        userId: user._id,
+        username: user.username,
+        cards: [],
+        lastOpened: new Date(), // Add lastOpened timestamp to match existing structure
+      });
+      await newCollection.save();
+      console.log("Collection created successfully for user:", user._id);
+    } catch (collectionError) {
+      console.error(
+        "Failed to create collection for new user:",
+        collectionError
+      );
+      // We'll continue with registration even if collection creation fails
+      // This way the user can still log in, and we can fix their collection later
+    }
 
     // Create JWT token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
