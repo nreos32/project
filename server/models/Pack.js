@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 
 const RaritySchema = new mongoose.Schema(
   {
-    1: { type: Number, default: 0 }, // Common slot 1
+    1: { type: Number, default: 0 },
     2: { type: Number, default: 0 },
     3: { type: Number, default: 0 },
-    4: { type: Number, default: 0 }, // Rare slot 4
-    5: { type: Number, default: 0 }, // Ultra Rare slot 5
+    4: { type: Number, default: 0 },
+    5: { type: Number, default: 0 },
   },
   { _id: false }
 );
 
 const CardSchema = new mongoose.Schema(
   {
-    id: { type: Number, required: true }, // unique card id
+    id: { type: Number, required: true },
     name: { type: String, required: true },
     type: { type: String },
     rare: { type: String },

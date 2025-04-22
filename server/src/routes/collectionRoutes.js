@@ -1,7 +1,10 @@
 // Collection management routes for user card collections
 const express = require("express");
 const router = express.Router();
+// Add console logging to debug model loading
+console.log("Loading Collection model in collectionRoutes.js");
 const Collection = require("../models/Collection");
+console.log("Collection model loaded successfully");
 const Pack = require("../../models/Pack");
 const User = require("../models/User");
 
@@ -52,6 +55,7 @@ router.post("/add", requireUser, async (req, res) => {
     await collection.save();
     res.json(collection);
   } catch (err) {
+    console.error("Collection add error:", err);
     res.status(500).json({ error: "Failed to add cards to collection" });
   }
 });

@@ -10,7 +10,7 @@ const Collection = () => {
   const [sortByType, setSortByType] = useState(false);
   const [sortByRarity, setSortByRarity] = useState(false);
   const [search, setSearch] = useState("");
-  const [modalCard, setModalCard] = useState(null); // For zoom modal
+  const [modalCard, setModalCard] = useState(null);
   const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
@@ -86,7 +86,6 @@ const Collection = () => {
 
   // Helper to get assetPath, type, name, and rarity for a card id or name
   const getCardInfo = (cardId) => {
-    // Try matching by id first, then by name
     const card =
       packCards.find((c) => c.id === cardId) ||
       packCards.find((c) => c.name === cardId);
