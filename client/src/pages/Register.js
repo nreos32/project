@@ -4,6 +4,7 @@ import "../styles/pages/Register.css";
 import logoenglish from "../Assets/UI/logoenglish.png";
 import battleimage from "../Assets/LoginRegiAssets/home_img_battle_main.png";
 import socialimage from "../Assets/LoginRegiAssets/home_img_social_main.png";
+import API_URL from "../config/api.js";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -34,9 +35,8 @@ const Register = () => {
       setIsLoading(false);
       return;
     }
-
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch(`${API_URL}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

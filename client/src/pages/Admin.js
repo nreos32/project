@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config/api.js";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -24,18 +25,15 @@ const Admin = () => {
           output = "Usage: give|/give <username> <cardId> [quantity]";
         } else {
           try {
-            const res = await fetch(
-              "http://localhost:5000/api/collection/give",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  username: usernameArg,
-                  cardId,
-                  quantity,
-                }),
-              }
-            );
+            const res = await fetch(`${API_URL}/api/collection/give`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                username: usernameArg,
+                cardId,
+                quantity,
+              }),
+            });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || "Failed to give card");
             output = `Gave ${quantity} of card ${cardId} to user ${usernameArg}`;
@@ -49,7 +47,7 @@ const Admin = () => {
           output = "Usage: ban|/ban <username>";
         } else {
           try {
-            const res = await fetch("http://localhost:5000/api/auth/ban", {
+            const res = await fetch(`${API_URL}/api/auth/ban`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ username: usernameArg }),
@@ -67,7 +65,7 @@ const Admin = () => {
           output = "Usage: unban|/unban <username>";
         } else {
           try {
-            const res = await fetch("http://localhost:5000/api/auth/unban", {
+            const res = await fetch(`${API_URL}/api/auth/unban`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ username: usernameArg }),

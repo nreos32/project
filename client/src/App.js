@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess } from "./features/auth/authSlice";
+import API_URL from "./config/api.js";
 import "./styles/App.css";
 import "./styles/components/Sidebar.css";
 import "./styles/components/ProfileModal.css";
@@ -104,23 +105,19 @@ const MainLayout = () => {
       setHasChangedProfile(true);
     }
   };
-
   const handleProfileSave = async () => {
     if (!hasChangedProfile || !user) return;
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/auth/profile-icon",
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: user.id,
-            profileIcon: selectedProfile,
-          }),
-        }
-      );
+      const response = await fetch(`${API_URL}/api/auth/profile-icon`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user.id,
+          profileIcon: selectedProfile,
+        }),
+      });
       const data = await response.json();
       if (response.ok) {
         dispatch(
