@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Collection = require("../models/Collection"); // Import Collection model
 
 // Register User
 router.post("/register", async (req, res) => {
@@ -20,9 +21,15 @@ router.post("/register", async (req, res) => {
       username,
       email,
       password,
+    });    await user.save();
+      // Create empty collection for the new user
+    const newCollection = new Collection({
+      userId: user._id,
+      username: user.username,
+      cards: [],
+      lastOpened: new Date() // Add lastOpened timestamp to match existing structure
     });
-
-    await user.save();
+    await newCollection.save();
 
     // Create JWT token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
