@@ -55,7 +55,6 @@ router.post("/add", requireUser, async (req, res) => {
     await collection.save();
     res.json(collection);
   } catch (err) {
-    console.error("Collection add error:", err);
     res.status(500).json({ error: "Failed to add cards to collection" });
   }
 });
